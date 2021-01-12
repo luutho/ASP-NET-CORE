@@ -1,0 +1,14 @@
+E:\LVTho\ASPNET-CORE\MISA-CukCuk\ASP.NET-CORE\MISA.CukCuk\MISA.CukCuk.ApplicationCore\bin\Debug\netcoreapp3.1\MISA.CukCuk.ApplicationCore.deps.json
+E:\LVTho\ASPNET-CORE\MISA-CukCuk\ASP.NET-CORE\MISA.CukCuk\MISA.CukCuk.ApplicationCore\bin\Debug\netcoreapp3.1\MISA.CukCuk.ApplicationCore.dll
+E:\LVTho\ASPNET-CORE\MISA-CukCuk\ASP.NET-CORE\MISA.CukCuk\MISA.CukCuk.ApplicationCore\bin\Debug\netcoreapp3.1\MISA.CukCuk.ApplicationCore.pdb
+E:\LVTho\ASPNET-CORE\MISA-CukCuk\ASP.NET-CORE\MISA.CukCuk\MISA.CukCuk.ApplicationCore\bin\Debug\netcoreapp3.1\MISA.CukCuk.Infrastructure.dll
+E:\LVTho\ASPNET-CORE\MISA-CukCuk\ASP.NET-CORE\MISA.CukCuk\MISA.CukCuk.ApplicationCore\bin\Debug\netcoreapp3.1\MISA.CukCuk.Infrastructure.pdb
+E:\LVTho\ASPNET-CORE\MISA-CukCuk\ASP.NET-CORE\MISA.CukCuk\MISA.CukCuk.ApplicationCore\obj\Debug\netcoreapp3.1\MISA.CukCuk.ApplicationCore.csprojAssemblyReference.cache
+E:\LVTho\ASPNET-CORE\MISA-CukCuk\ASP.NET-CORE\MISA.CukCuk\MISA.CukCuk.ApplicationCore\obj\Debug\netcoreapp3.1\MISA.CukCuk.ApplicationCore.AssemblyInfoInputs.cache
+E:\LVTho\ASPNET-CORE\MISA-CukCuk\ASP.NET-CORE\MISA.CukCuk\MISA.CukCuk.ApplicationCore\obj\Debug\netcoreapp3.1\MISA.CukCuk.ApplicationCore.AssemblyInfo.cs
+E:\LVTho\ASPNET-CORE\MISA-CukCuk\ASP.NET-CORE\MISA.CukCuk\MISA.CukCuk.ApplicationCore\obj\Debug\netcoreapp3.1\MISA.CukCuk.ApplicationCore.csproj.CoreCompileInputs.cache
+E:\LVTho\ASPNET-CORE\MISA-CukCuk\ASP.NET-CORE\MISA.CukCuk\MISA.CukCuk.ApplicationCore\obj\Debug\netcoreapp3.1\MISA.CukCuk.ApplicationCore.csproj.CopyComplete
+E:\LVTho\ASPNET-CORE\MISA-CukCuk\ASP.NET-CORE\MISA.CukCuk\MISA.CukCuk.ApplicationCore\obj\Debug\netcoreapp3.1\MISA.CukCuk.ApplicationCore.dll
+E:\LVTho\ASPNET-CORE\MISA-CukCuk\ASP.NET-CORE\MISA.CukCuk\MISA.CukCuk.ApplicationCore\obj\Debug\netcoreapp3.1\MISA.CukCuk.ApplicationCore.pdb
+E:\LVTho\ASPNET-CORE\MISA-CukCuk\ASP.NET-CORE\MISA.CukCuk\MISA.CukCuk.ApplicationCore\bin\Debug\netcoreapp3.1\MISA.Entity.dll
+E:\LVTho\ASPNET-CORE\MISA-CukCuk\ASP.NET-CORE\MISA.CukCuk\MISA.CukCuk.ApplicationCore\bin\Debug\netcoreapp3.1\MISA.Entity.pdb
