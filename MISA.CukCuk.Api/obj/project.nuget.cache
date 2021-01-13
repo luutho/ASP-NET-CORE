@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "He4rCXULmdTQ7HckH9C83DJx1tOqiJSH73gRku6a0Ih493d1jWmftJm2/M7JVqWwxHedPeQIvtbVMiQF4UL/sA==",
+  "dgSpecHash": "TjgweNdR7B2bQQgCS6WkSBkA4QiYGP6KyVui/7d6T3gC+I9MgwyKUKW5gFpQgkwu1RjtvKpyjnmK0Ke834Wo0Q==",
   "success": true,
-  "projectFilePath": "E:\\LVTho\\ASPNET-CORE\\MISA-CukCuk\\ASP.NET-CORE\\MISA.CukCuk\\MISA.CukCuk.Api\\MISA.CukCuk.Api.csproj",
+  "projectFilePath": "E:\\LVTho\\ASPNET-CORE\\MISACukCuk\\ASP-NET-CORE\\MISA.CukCuk.Api\\MISA.CukCuk.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\lvtho\\.nuget\\packages\\bouncycastle.netcore\\1.8.3\\bouncycastle.netcore.1.8.3.nupkg.sha512",
     "C:\\Users\\lvtho\\.nuget\\packages\\dapper\\2.0.78\\dapper.2.0.78.nupkg.sha512",

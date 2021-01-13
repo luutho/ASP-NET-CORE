@@ -105,9 +105,50 @@ namespace MISA.CukCuk.Infrastructure
 
 
         //Sửa thông tin khách hàng:
+        /// <summary>
+        /// Hàm sửa thông tin khách hàng
+        /// </summary>
+        /// <param name="customer">Object khách hàng</param>
+        /// <returns>Số bản ghi update được</returns>
+        /// CreatedBy: LVTHO (13/01/2021)
+        public int UpdateCustomerByCode(Customer customer)
+        {
+            var properties = customer.GetType().GetProperties();
+            var parameters = new DynamicParameters();
+            //Xử lý các kiểu dữ liệu
+            foreach(var property in properties)
+            {
+                var propertyName = property.Name;
+                var propertyValue = property.GetValue(customer);
+                var propertyType = property.PropertyType;
+                if(propertyType == typeof(Guid) || propertyType == typeof(Guid?))
+                {
+                    parameters.Add($"@{propertyName}", propertyValue, DbType.String);
+                }
+                else
+                {
+                    parameters.Add($"@{propertyName}", propertyValue);
+                }
+            }
+            //Thực thi commandText
+            var rowAffects = connectDatabase().Execute("Proc_UpdateCustomerByCode", parameters, commandType: CommandType.StoredProcedure);
+            //Trả về số bản ghi sửa được
+            return rowAffects;
+        }
 
 
-        //Xoá thông tin khách hàng theo khoá chính:
+        //Xoá thông tin khách hàng theo mã khách hàng:
+        /// <summary>
+        /// Hàm xoá thông tin khách hàng
+        /// </summary>
+        /// <param name="customerCode">Mã khách hàng</param>
+        /// <returns>Số bản ghi bị ảnh hưởng (bị xoá)</returns>
+        /// CreatedBy: LVTHO (13/01/2021)
+        public int DeleteCustomerByCode(string customerCode)
+        {
+            var rowAffects = connectDatabase().Execute("Proc_DeleteCustomerByCode", customerCode, commandType: CommandType.StoredProcedure);
+            return rowAffects;
+        }
 
         #endregion
     }

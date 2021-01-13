@@ -6016,11 +6016,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\LVTho\\ASPNET-CORE\\MISA-CukCuk\\ASP.NET-CORE\\MISA.CukCuk\\MISA.CukCuk.Api\\MISA.CukCuk.Api.csproj",
+      "projectUniqueName": "E:\\LVTho\\ASPNET-CORE\\MISACukCuk\\ASP-NET-CORE\\MISA.CukCuk.Api\\MISA.CukCuk.Api.csproj",
       "projectName": "MISA.CukCuk.Api",
-      "projectPath": "E:\\LVTho\\ASPNET-CORE\\MISA-CukCuk\\ASP.NET-CORE\\MISA.CukCuk\\MISA.CukCuk.Api\\MISA.CukCuk.Api.csproj",
+      "projectPath": "E:\\LVTho\\ASPNET-CORE\\MISACukCuk\\ASP-NET-CORE\\MISA.CukCuk.Api\\MISA.CukCuk.Api.csproj",
       "packagesPath": "C:\\Users\\lvtho\\.nuget\\packages\\",
-      "outputPath": "E:\\LVTho\\ASPNET-CORE\\MISA-CukCuk\\ASP.NET-CORE\\MISA.CukCuk\\MISA.CukCuk.Api\\obj\\",
+      "outputPath": "E:\\LVTho\\ASPNET-CORE\\MISACukCuk\\ASP-NET-CORE\\MISA.CukCuk.Api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\lvtho\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -6037,11 +6037,11 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "E:\\LVTho\\ASPNET-CORE\\MISA-CukCuk\\ASP.NET-CORE\\MISA.CukCuk\\MISA.CukCuk.ApplicationCore\\MISA.CukCuk.ApplicationCore.csproj": {
-              "projectPath": "E:\\LVTho\\ASPNET-CORE\\MISA-CukCuk\\ASP.NET-CORE\\MISA.CukCuk\\MISA.CukCuk.ApplicationCore\\MISA.CukCuk.ApplicationCore.csproj"
+            "E:\\LVTho\\ASPNET-CORE\\MISACukCuk\\ASP-NET-CORE\\MISA.CukCuk.ApplicationCore\\MISA.CukCuk.ApplicationCore.csproj": {
+              "projectPath": "E:\\LVTho\\ASPNET-CORE\\MISACukCuk\\ASP-NET-CORE\\MISA.CukCuk.ApplicationCore\\MISA.CukCuk.ApplicationCore.csproj"
             },
-            "E:\\LVTho\\ASPNET-CORE\\MISA-CukCuk\\ASP.NET-CORE\\MISA.CukCuk\\MISA.Entity\\MISA.Entity.csproj": {
-              "projectPath": "E:\\LVTho\\ASPNET-CORE\\MISA-CukCuk\\ASP.NET-CORE\\MISA.CukCuk\\MISA.Entity\\MISA.Entity.csproj"
+            "E:\\LVTho\\ASPNET-CORE\\MISACukCuk\\ASP-NET-CORE\\MISA.Entity\\MISA.Entity.csproj": {
+              "projectPath": "E:\\LVTho\\ASPNET-CORE\\MISACukCuk\\ASP-NET-CORE\\MISA.Entity\\MISA.Entity.csproj"
             }
           }
         }

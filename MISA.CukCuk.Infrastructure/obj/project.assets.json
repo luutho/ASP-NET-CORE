@@ -5670,11 +5670,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\LVTho\\ASPNET-CORE\\MISA-CukCuk\\ASP.NET-CORE\\MISA.CukCuk\\MISA.CukCuk.Infrastructure\\MISA.CukCuk.Infrastructure.csproj",
+      "projectUniqueName": "E:\\LVTho\\ASPNET-CORE\\MISACukCuk\\ASP-NET-CORE\\MISA.CukCuk.Infrastructure\\MISA.CukCuk.Infrastructure.csproj",
       "projectName": "MISA.CukCuk.Infrastructure",
-      "projectPath": "E:\\LVTho\\ASPNET-CORE\\MISA-CukCuk\\ASP.NET-CORE\\MISA.CukCuk\\MISA.CukCuk.Infrastructure\\MISA.CukCuk.Infrastructure.csproj",
+      "projectPath": "E:\\LVTho\\ASPNET-CORE\\MISACukCuk\\ASP-NET-CORE\\MISA.CukCuk.Infrastructure\\MISA.CukCuk.Infrastructure.csproj",
       "packagesPath": "C:\\Users\\lvtho\\.nuget\\packages\\",
-      "outputPath": "E:\\LVTho\\ASPNET-CORE\\MISA-CukCuk\\ASP.NET-CORE\\MISA.CukCuk\\MISA.CukCuk.Infrastructure\\obj\\",
+      "outputPath": "E:\\LVTho\\ASPNET-CORE\\MISACukCuk\\ASP-NET-CORE\\MISA.CukCuk.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\lvtho\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -5691,8 +5691,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "E:\\LVTho\\ASPNET-CORE\\MISA-CukCuk\\ASP.NET-CORE\\MISA.CukCuk\\MISA.Entity\\MISA.Entity.csproj": {
-              "projectPath": "E:\\LVTho\\ASPNET-CORE\\MISA-CukCuk\\ASP.NET-CORE\\MISA.CukCuk\\MISA.Entity\\MISA.Entity.csproj"
+            "E:\\LVTho\\ASPNET-CORE\\MISACukCuk\\ASP-NET-CORE\\MISA.Entity\\MISA.Entity.csproj": {
+              "projectPath": "E:\\LVTho\\ASPNET-CORE\\MISACukCuk\\ASP-NET-CORE\\MISA.Entity\\MISA.Entity.csproj"
             }
           }
         }

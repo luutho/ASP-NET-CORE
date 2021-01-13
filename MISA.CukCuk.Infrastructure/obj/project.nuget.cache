@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "EK3kf17VF/UU4JHvYiTentLzDyt6t8RY111yzzk8vW9PPdLMo6LheJDCuv2F2X2SmjlR4lyQdUwzRWdV5kayjw==",
+  "dgSpecHash": "oIXqPFzlv504jJVSsPLQ0ngwXIf9CHjUklW27sP8qkzQ7CjGaLIAmwiCWFz4VTCm4yXOpCEYzfGfr4+JwolbNg==",
   "success": true,
-  "projectFilePath": "E:\\LVTho\\ASPNET-CORE\\MISA-CukCuk\\ASP.NET-CORE\\MISA.CukCuk\\MISA.CukCuk.Infrastructure\\MISA.CukCuk.Infrastructure.csproj",
+  "projectFilePath": "E:\\LVTho\\ASPNET-CORE\\MISACukCuk\\ASP-NET-CORE\\MISA.CukCuk.Infrastructure\\MISA.CukCuk.Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\lvtho\\.nuget\\packages\\bouncycastle.netcore\\1.8.3\\bouncycastle.netcore.1.8.3.nupkg.sha512",
     "C:\\Users\\lvtho\\.nuget\\packages\\dapper\\2.0.78\\dapper.2.0.78.nupkg.sha512",

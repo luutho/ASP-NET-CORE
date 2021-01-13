@@ -61,6 +61,12 @@ namespace MISA.CukCuk.ApplicationCore
         }
 
         //Thêm mới khách hàng
+        /// <summary>
+        /// Hàm thêm mới thông tin khách hàng
+        /// </summary>
+        /// <param name="customer">Object khách hàng</param>
+        /// <returns></returns>
+        /// CreatedBy: LVTHO (13/01/2021)
         public ServiceResult InsertCustomer(Customer customer)
         {
             var serviceResult = new ServiceResult();
@@ -108,9 +114,75 @@ namespace MISA.CukCuk.ApplicationCore
 
 
         //Sửa thông tin khách hàng
+        /// <summary>
+        /// Hàm sửa thông tin khách hàng
+        /// </summary>
+        /// <param name="customer">Object khách hàng</param>
+        /// <returns></returns>
+        /// CreatedBy: LVTHO (13/01/2021)
+        public ServiceResult UpdateCustomer(Customer customer)
+        {
+            var serviceResult = new ServiceResult();
+            var customerContext = new CustomerContext();
+
+            //Check trường bắt buộc nhập:
+            //Validate dữ liệu:
+            var customerCode = customer.CustomerCode;
+            if (string.IsNullOrEmpty(customerCode))
+            {
+                var msg = new
+                {
+                    devMsg = new { fieldName = "CustomerCode", msg = "Mã khách hàng không được để trống!" },
+                    userMsg = "Mã khách hàng không được để trống!",
+                    code = MISACode.NotValid,
+                };
+            serviceResult.MISACode = MISACode.NotValid;
+            serviceResult.Messenger = "Mã khách hàng không được để trống!";
+            serviceResult.Data = msg;
+            return serviceResult;
+            }
+
+            var rowAffects = customerContext.UpdateCustomerByCode(customer);
+            serviceResult.MISACode = MISACode.IsValid;
+            serviceResult.Messenger = "Sửa thành công";
+            serviceResult.Data = rowAffects;
+            return serviceResult;
+        }
 
 
         //Xoá thông tin khách hàng
+        /// <summary>
+        /// Hàm xoá thông tin khách hàng
+        /// </summary>
+        /// <param name="customerCode">Mã khách hàng</param>
+        /// <returns></returns>
+        /// CreatedBy: LVTHO (13/01/2021)
+        public ServiceResult DeleteCustomer(string customerCode)
+        {
+            var serviceResult = new ServiceResult();
+            var customerContext = new CustomerContext();
+            //Check trường bắt buộc nhập:
+            //Validate dữ liệu:
+            if (string.IsNullOrEmpty(customerCode))
+            {
+                var msg = new
+                {
+                    devMsg = new { fieldName = "CustomerCode", msg = "Mã khách hàng không được để trống!" },
+                    userMsg = "Mã khách hàng không được để trống!",
+                    code = MISACode.NotValid,
+                };
+                serviceResult.MISACode = MISACode.NotValid;
+                serviceResult.Messenger = "Mã khách hàng không được để trống!";
+                serviceResult.Data = msg;
+                return serviceResult;
+            }
+
+            var rowAffects = customerContext.DeleteCustomerByCode(customerCode);
+            serviceResult.MISACode = MISACode.IsValid;
+            serviceResult.Messenger = "Xoá thành công";
+            serviceResult.Data = rowAffects;
+            return serviceResult;
+        }
         #endregion
     }
 }

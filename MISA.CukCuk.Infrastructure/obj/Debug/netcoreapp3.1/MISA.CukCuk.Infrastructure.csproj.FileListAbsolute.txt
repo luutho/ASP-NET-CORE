@@ -10,3 +10,15 @@ E:\LVTho\ASPNET-CORE\MISA-CukCuk\ASP.NET-CORE\MISA.CukCuk\MISA.CukCuk.Infrastruc
 E:\LVTho\ASPNET-CORE\MISA-CukCuk\ASP.NET-CORE\MISA.CukCuk\MISA.CukCuk.Infrastructure\bin\Debug\netcoreapp3.1\MISA.Entity.dll
 E:\LVTho\ASPNET-CORE\MISA-CukCuk\ASP.NET-CORE\MISA.CukCuk\MISA.CukCuk.Infrastructure\bin\Debug\netcoreapp3.1\MISA.Entity.pdb
 E:\LVTho\ASPNET-CORE\MISA-CukCuk\ASP.NET-CORE\MISA.CukCuk\MISA.CukCuk.Infrastructure\obj\Debug\netcoreapp3.1\MISA.CukCuk.Infrastructure.csproj.CopyComplete
+E:\LVTho\ASPNET-CORE\MISACukCuk\ASP-NET-CORE\MISA.CukCuk.Infrastructure\bin\Debug\netcoreapp3.1\MISA.CukCuk.Infrastructure.deps.json
+E:\LVTho\ASPNET-CORE\MISACukCuk\ASP-NET-CORE\MISA.CukCuk.Infrastructure\bin\Debug\netcoreapp3.1\MISA.CukCuk.Infrastructure.dll
+E:\LVTho\ASPNET-CORE\MISACukCuk\ASP-NET-CORE\MISA.CukCuk.Infrastructure\bin\Debug\netcoreapp3.1\MISA.CukCuk.Infrastructure.pdb
+E:\LVTho\ASPNET-CORE\MISACukCuk\ASP-NET-CORE\MISA.CukCuk.Infrastructure\bin\Debug\netcoreapp3.1\MISA.Entity.dll
+E:\LVTho\ASPNET-CORE\MISACukCuk\ASP-NET-CORE\MISA.CukCuk.Infrastructure\bin\Debug\netcoreapp3.1\MISA.Entity.pdb
+E:\LVTho\ASPNET-CORE\MISACukCuk\ASP-NET-CORE\MISA.CukCuk.Infrastructure\obj\Debug\netcoreapp3.1\MISA.CukCuk.Infrastructure.csprojAssemblyReference.cache
+E:\LVTho\ASPNET-CORE\MISACukCuk\ASP-NET-CORE\MISA.CukCuk.Infrastructure\obj\Debug\netcoreapp3.1\MISA.CukCuk.Infrastructure.AssemblyInfoInputs.cache
+E:\LVTho\ASPNET-CORE\MISACukCuk\ASP-NET-CORE\MISA.CukCuk.Infrastructure\obj\Debug\netcoreapp3.1\MISA.CukCuk.Infrastructure.AssemblyInfo.cs
+E:\LVTho\ASPNET-CORE\MISACukCuk\ASP-NET-CORE\MISA.CukCuk.Infrastructure\obj\Debug\netcoreapp3.1\MISA.CukCuk.Infrastructure.csproj.CoreCompileInputs.cache
+E:\LVTho\ASPNET-CORE\MISACukCuk\ASP-NET-CORE\MISA.CukCuk.Infrastructure\obj\Debug\netcoreapp3.1\MISA.CukCuk.Infrastructure.csproj.CopyComplete
+E:\LVTho\ASPNET-CORE\MISACukCuk\ASP-NET-CORE\MISA.CukCuk.Infrastructure\obj\Debug\netcoreapp3.1\MISA.CukCuk.Infrastructure.dll
+E:\LVTho\ASPNET-CORE\MISACukCuk\ASP-NET-CORE\MISA.CukCuk.Infrastructure\obj\Debug\netcoreapp3.1\MISA.CukCuk.Infrastructure.pdb

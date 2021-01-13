@@ -188,39 +188,16 @@ namespace MISA.CukCuk.Api.Controllers
         [HttpPut]
         public IActionResult PutCustomer(Customer customer)
         {
-            //Validate dữ liệu
-            //Check trường bắt buộc nhập
-            var customerCode = customer.CustomerCode;
-            if (string.IsNullOrEmpty(customerCode))
+            var customerService = new CustomerService();
+            var serviceResult = customerService.UpdateCustomer(customer);
+            if(serviceResult.MISACode == MISACode.NotValid)
             {
-                var msg = new
-                {
-                    devMsg = new { fieldName = "CustomerCode", msg = "Mã khách hàng không được để trống!" },
-                    userMsg = "Mã khách hàng không được để trống",
-                    Code = 999,
-                };
-                return BadRequest(msg);
+                return BadRequest(serviceResult.Data);
             }
-            var properties = customer.GetType().GetProperties();
-            var parameters = new DynamicParameters();
-            foreach (var property in properties)
+
+            if(serviceResult.MISACode == MISACode.IsValid && (int)serviceResult.Data > 0)
             {
-                var propertyName = property.Name;
-                var propertyValue = property.GetValue(customer);
-                var propertyType = property.PropertyType;
-                if (propertyType == typeof(Guid) || propertyType == typeof(Guid?))
-                {
-                    parameters.Add($"@{propertyName}", propertyValue, DbType.String);
-                }
-                else
-                {
-                    parameters.Add($"@{propertyName}", propertyValue);
-                }
-            }
-            var rowAffects = connectDatabase().Execute("UpdateCustomerByCode", parameters, commandType: CommandType.StoredProcedure);
-            if (rowAffects > 0)
-            {
-                return Created("Sửa thành công", customer);
+                return Created("", customer);
             }
             else
             {
@@ -237,13 +214,19 @@ namespace MISA.CukCuk.Api.Controllers
         /// <param name="id">Id khách hàng</param>
         /// <returns></returns>
         /// CreatedBy: LVTHO (11/01/2021)
-        [HttpDelete("DeleteCustomerById/{id}")]
-        public IActionResult DeleteCustomerById(string id)
+        [HttpDelete]
+        public IActionResult DeleteCustomer(string customerCode)
         {
-            var rowAffects = connectDatabase().Execute("Proc_DeleteCustomerById", new { CustomerId = id }, commandType: CommandType.StoredProcedure);
-            if (rowAffects > 0)
+            var customerService = new CustomerService();
+            var serviceResult = customerService.DeleteCustomer(customerCode);
+            if(serviceResult.MISACode == MISACode.NotValid)
             {
-                return Created("", rowAffects);
+                return BadRequest(serviceResult.Data);
+            }
+
+            if(serviceResult.MISACode == MISACode.IsValid && (int)serviceResult.Data > 0)
+            {
+                return Created("", customerCode);
             }
             else
             {
