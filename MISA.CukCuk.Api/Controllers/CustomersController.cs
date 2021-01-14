@@ -11,6 +11,7 @@ using MISA.CukCuk.ApplicationCore;
 using MISA.Entity.model;
 using MISA.CukCuk.ApplicationCore.Entities;
 using MISA.Entity;
+using MISA.CukCuk.ApplicationCore.Interfaces;
 
 namespace MISA.CukCuk.Api.Controllers
 {
@@ -18,25 +19,12 @@ namespace MISA.CukCuk.Api.Controllers
     [ApiController]
     public class CustomersController : ControllerBase
     {
-        #region
-        /// <summary>
-        /// Tạo kết nối database
-        /// </summary>
-        /// <returns></returns>
-        /// CretedBy: LVTHO (11/01/2021)
-        public IDbConnection connectDatabase()
+        ICustomerService _customerService;
+        public CustomersController(ICustomerService customerService)
         {
-            // Kết nối database
-            var connectionString = "User Id=nvmanh;" +
-                "Host=103.124.92.43;" +
-                "Port=3306;" +
-                "Database=MISACukCuk-MF662-LVTHO;" +
-                "Password=12345678;" +
-                "Character Set=utf8";
-            IDbConnection dbConnection = new MySqlConnection(connectionString);
-            return dbConnection;
+            _customerService = customerService;
         }
-        #endregion
+        
 
         /// <summary>
         /// Lấy dữ liệu khách hàng
@@ -46,8 +34,7 @@ namespace MISA.CukCuk.Api.Controllers
         [HttpGet]
         public IActionResult GetCustomer()
         {
-            var customerService = new CustomerService();
-            var customers = customerService.GetCustomers();
+            var customers = _customerService.GetCustomers();
             return Ok(customers);
         }
 
@@ -88,9 +75,9 @@ namespace MISA.CukCuk.Api.Controllers
         /// <returns></returns>
         /// CreatedBy: LVTHO(11/01/2021)
         [HttpGet("GetCustomerById/{id}")]
-        public IActionResult GetCustomerById(string id)
+        public IActionResult GetCustomerById(Guid id)
         {
-            var customers = connectDatabase().Query<Customer>("Proc_GetCustomerById", new { CustomerId = id }, commandType: CommandType.StoredProcedure);
+            var customers = _customerService.GetCustomerById(id);
             return Ok(customers);
         }
 
@@ -103,8 +90,7 @@ namespace MISA.CukCuk.Api.Controllers
         [HttpGet("GetCustomerByCode/{code}")]
         public IActionResult GetCustomerByCode(string code)
         {
-            var customerService = new CustomerService();
-            var customers = customerService.GetCustomerByCode(code);
+            var customers = _customerService.GetCustomerByCode(code);
             return Ok(customers);
         }
 
@@ -160,8 +146,7 @@ namespace MISA.CukCuk.Api.Controllers
         [HttpPost]
         public IActionResult PostCustomer(Customer customer)
         {
-            var customerService = new CustomerService();
-            var serviceResult = customerService.InsertCustomer(customer);
+            var serviceResult = _customerService.AddCustomer(customer);
             
             if(serviceResult.MISACode == MISACode.NotValid)
             {
@@ -188,8 +173,7 @@ namespace MISA.CukCuk.Api.Controllers
         [HttpPut]
         public IActionResult PutCustomer(Customer customer)
         {
-            var customerService = new CustomerService();
-            var serviceResult = customerService.UpdateCustomer(customer);
+            var serviceResult = _customerService.UpdateCustomer(customer);
             if(serviceResult.MISACode == MISACode.NotValid)
             {
                 return BadRequest(serviceResult.Data);
@@ -217,8 +201,7 @@ namespace MISA.CukCuk.Api.Controllers
         [HttpDelete]
         public IActionResult DeleteCustomer(string customerCode)
         {
-            var customerService = new CustomerService();
-            var serviceResult = customerService.DeleteCustomer(customerCode);
+            var serviceResult = _customerService.DeleteCustomer(customerCode);
             if(serviceResult.MISACode == MISACode.NotValid)
             {
                 return BadRequest(serviceResult.Data);

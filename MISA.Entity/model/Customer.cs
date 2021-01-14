@@ -11,8 +11,20 @@ namespace MISA.Entity.model
     /// CreatedBy: LVTHO (12/01/2021)
     public class Customer
     {
+        #region Declare
+
+        #endregion
+
+        #region Constructor
+
+        #endregion
+
+        #region Method
+
+        #endregion
+
         #region property
-        
+
         /// <summary>
         /// Id khách hàng - Khoá chính
         /// </summary>

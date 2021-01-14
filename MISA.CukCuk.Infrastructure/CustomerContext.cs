@@ -11,25 +11,31 @@ namespace MISA.CukCuk.Infrastructure
 {
     public class CustomerContext
     {
+        #region Declare
         /// <summary>
-        /// Hàm kết nối cơ sở dữ liệu
+        /// Kết nối Database
         /// </summary>
-        /// <returns></returns>
-        /// CreatedBy: LVTHO (12/01/2021)
-        public IDbConnection connectDatabase()
-        {
-            // Kết nối database
-            var connectionString = "User Id=nvmanh;" +
-                "Host=103.124.92.43;" +
-                "Port=3306;" +
-                "Database=MISACukCuk-MF662-LVTHO;" +
-                "Password=12345678;" +
-                "Character Set=utf8";
-            IDbConnection dbConnection = new MySqlConnection(connectionString);
-            return dbConnection;
-        }
+        /// CreatedBy: LVTHO (14/01/2021)
 
-        #region method
+        // Khai báo thông tin kết nối
+        string _connectionString = "User Id=nvmanh;" +
+            "Host=103.124.92.43;" +
+            "Port=3306;" +
+            "Database=MISACukCuk-MF662-LVTHO;" +
+            "Password=12345678;" +
+            "Character Set=utf8";
+        // Khởi tạo đối tượng kết nối
+        IDbConnection dbConnection;
+        #endregion
+
+        #region Constructor
+        public CustomerContext()
+        {
+            dbConnection = new MySqlConnection(_connectionString);
+        }
+        #endregion
+
+        #region Method
         //Lấy toàn bộ danh sách khách hàng:
         /// <summary>
         /// Hàm lấy dữ liệu khách hàng
@@ -39,7 +45,7 @@ namespace MISA.CukCuk.Infrastructure
         public IEnumerable<Customer> GetCustomers()
         {
             //Khởi tạo các commandText
-            var customers = connectDatabase().Query<Customer>("Proc_GetCusstomers", commandType: CommandType.StoredProcedure);
+            var customers = dbConnection.Query<Customer>("Proc_GetCusstomers", commandType: CommandType.StoredProcedure);
             return customers;
         }
 
@@ -53,7 +59,7 @@ namespace MISA.CukCuk.Infrastructure
         public IEnumerable<Customer> GetCustomersByCode(string customerCode)
         {
             //Khởi tạo với commandText
-            var customers = connectDatabase().Query<Customer>("Proc_GetCustomerByCode", new { CustomerCode = customerCode }, commandType: CommandType.StoredProcedure);
+            var customers = dbConnection.Query<Customer>("Proc_GetCustomerByCode", new { CustomerCode = customerCode }, commandType: CommandType.StoredProcedure);
             return customers;
         }
 
@@ -86,7 +92,7 @@ namespace MISA.CukCuk.Infrastructure
             }
 
             //Thực thi commandText
-            var rowAffect = connectDatabase().Execute("Proc_InsertCustomer", parameters, commandType: CommandType.StoredProcedure);
+            var rowAffect = dbConnection.Execute("Proc_InsertCustomer", parameters, commandType: CommandType.StoredProcedure);
             //Trả về số bản ghi thêm mới được
             return rowAffect;
         }
@@ -99,7 +105,7 @@ namespace MISA.CukCuk.Infrastructure
         /// CreatedBy: LVTHO (12/01/2021)
         public Customer GetCustomerByCode(string customerCode)
         {
-            var res = connectDatabase().Query<Customer>("Proc_GetCustomerByCode", new { CustomerCode = customerCode }, commandType: CommandType.StoredProcedure).FirstOrDefault();
+            var res = dbConnection.Query<Customer>("Proc_GetCustomerByCode", new { CustomerCode = customerCode }, commandType: CommandType.StoredProcedure).FirstOrDefault();
             return res;
         }
 
@@ -131,7 +137,7 @@ namespace MISA.CukCuk.Infrastructure
                 }
             }
             //Thực thi commandText
-            var rowAffects = connectDatabase().Execute("Proc_UpdateCustomerByCode", parameters, commandType: CommandType.StoredProcedure);
+            var rowAffects = dbConnection.Execute("Proc_UpdateCustomerByCode", parameters, commandType: CommandType.StoredProcedure);
             //Trả về số bản ghi sửa được
             return rowAffects;
         }
@@ -146,7 +152,7 @@ namespace MISA.CukCuk.Infrastructure
         /// CreatedBy: LVTHO (13/01/2021)
         public int DeleteCustomerByCode(string customerCode)
         {
-            var rowAffects = connectDatabase().Execute("Proc_DeleteCustomerByCode", customerCode, commandType: CommandType.StoredProcedure);
+            var rowAffects = dbConnection.Execute("Proc_DeleteCustomerByCode", customerCode, commandType: CommandType.StoredProcedure);
             return rowAffects;
         }
 

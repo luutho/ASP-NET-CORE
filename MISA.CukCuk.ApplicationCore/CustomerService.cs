@@ -9,28 +9,21 @@ using System.Linq;
 using MISA.CukCuk.ApplicationCore.Entities;
 using MISA.Entity.model;
 using MISA.Entity;
+using MISA.CukCuk.ApplicationCore.Interfaces;
 
 namespace MISA.CukCuk.ApplicationCore
 {
-    public class CustomerService
+    public class CustomerService : ICustomerService
     {
-        /// <summary>
-        /// Tạo kết nối database
-        /// </summary>
-        /// <returns></returns>
-        /// CretedBy: LVTHO (11/01/2021)
-        public IDbConnection connectDatabase()
+        ICustomerRepository _customerRepository;
+
+        #region constructor
+        public CustomerService(ICustomerRepository customerRepository)
         {
-            // Kết nối database
-            var connectionString = "User Id=nvmanh;" +
-                "Host=103.124.92.43;" +
-                "Port=3306;" +
-                "Database=MISACukCuk-MF662-LVTHO;" +
-                "Password=12345678;" +
-                "Character Set=utf8";
-            IDbConnection dbConnection = new MySqlConnection(connectionString);
-            return dbConnection;
+            _customerRepository = customerRepository;
         }
+        #endregion
+
 
         #region method
         //Lấy danh sách khách hàng
@@ -41,8 +34,7 @@ namespace MISA.CukCuk.ApplicationCore
         /// CreatedBy: LVTHO (12/01/2021)
         public IEnumerable<Customer> GetCustomers()
         {
-            var customerContext = new CustomerContext();
-            var customers = customerContext.GetCustomers();
+            var customers = _customerRepository.GetCustomers();
             return customers;
         }
 
@@ -55,8 +47,7 @@ namespace MISA.CukCuk.ApplicationCore
         /// CreatedBy: LVTHO (12/01/2021)
         public IEnumerable<Customer> GetCustomerByCode(string customerCode)
         {
-            var customerContext = new CustomerContext();
-            var customers = customerContext.GetCustomersByCode(customerCode);
+            var customers = _customerRepository.GetCustomersByCode(customerCode);
             return customers;
         }
 
@@ -67,7 +58,7 @@ namespace MISA.CukCuk.ApplicationCore
         /// <param name="customer">Object khách hàng</param>
         /// <returns></returns>
         /// CreatedBy: LVTHO (13/01/2021)
-        public ServiceResult InsertCustomer(Customer customer)
+        public ServiceResult AddCustomer(Customer customer)
         {
             var serviceResult = new ServiceResult();
             var customerContext = new CustomerContext();
@@ -183,6 +174,15 @@ namespace MISA.CukCuk.ApplicationCore
             serviceResult.Data = rowAffects;
             return serviceResult;
         }
+
+        public IEnumerable<Customer> GetCustomerById(Guid customerId)
+        {
+            throw new NotImplementedException();
+        }
+
+
+
+
         #endregion
     }
 }

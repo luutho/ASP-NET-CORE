@@ -7,3 +7,12 @@ E:\LVTho\ASPNET-CORE\MISA-CukCuk\ASP.NET-CORE\MISA.CukCuk\MISA.Entity\obj\Debug\
 E:\LVTho\ASPNET-CORE\MISA-CukCuk\ASP.NET-CORE\MISA.CukCuk\MISA.Entity\obj\Debug\netcoreapp3.1\MISA.Entity.csproj.CoreCompileInputs.cache
 E:\LVTho\ASPNET-CORE\MISA-CukCuk\ASP.NET-CORE\MISA.CukCuk\MISA.Entity\obj\Debug\netcoreapp3.1\MISA.Entity.dll
 E:\LVTho\ASPNET-CORE\MISA-CukCuk\ASP.NET-CORE\MISA.CukCuk\MISA.Entity\obj\Debug\netcoreapp3.1\MISA.Entity.pdb
+E:\LVTho\ASPNET-CORE\MISACukCuk\ASP-NET-CORE\MISA.Entity\bin\Debug\netcoreapp3.1\MISA.Entity.deps.json
+E:\LVTho\ASPNET-CORE\MISACukCuk\ASP-NET-CORE\MISA.Entity\bin\Debug\netcoreapp3.1\MISA.Entity.dll
+E:\LVTho\ASPNET-CORE\MISACukCuk\ASP-NET-CORE\MISA.Entity\bin\Debug\netcoreapp3.1\MISA.Entity.pdb
+E:\LVTho\ASPNET-CORE\MISACukCuk\ASP-NET-CORE\MISA.Entity\obj\Debug\netcoreapp3.1\MISA.Entity.csprojAssemblyReference.cache
+E:\LVTho\ASPNET-CORE\MISACukCuk\ASP-NET-CORE\MISA.Entity\obj\Debug\netcoreapp3.1\MISA.Entity.AssemblyInfoInputs.cache
+E:\LVTho\ASPNET-CORE\MISACukCuk\ASP-NET-CORE\MISA.Entity\obj\Debug\netcoreapp3.1\MISA.Entity.AssemblyInfo.cs
+E:\LVTho\ASPNET-CORE\MISACukCuk\ASP-NET-CORE\MISA.Entity\obj\Debug\netcoreapp3.1\MISA.Entity.csproj.CoreCompileInputs.cache
+E:\LVTho\ASPNET-CORE\MISACukCuk\ASP-NET-CORE\MISA.Entity\obj\Debug\netcoreapp3.1\MISA.Entity.dll
+E:\LVTho\ASPNET-CORE\MISACukCuk\ASP-NET-CORE\MISA.Entity\obj\Debug\netcoreapp3.1\MISA.Entity.pdb
