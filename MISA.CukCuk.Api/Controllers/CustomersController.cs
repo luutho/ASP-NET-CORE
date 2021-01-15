@@ -8,10 +8,9 @@ using System.Threading.Tasks;
 using System.Data;
 using MySql.Data.MySqlClient;
 using MISA.CukCuk.ApplicationCore;
-using MISA.Entity.model;
 using MISA.CukCuk.ApplicationCore.Entities;
-using MISA.Entity;
 using MISA.CukCuk.ApplicationCore.Interfaces;
+using MISA.CukCuk.ApplicationCore.Enums;
 
 namespace MISA.CukCuk.Api.Controllers
 {
@@ -144,11 +143,11 @@ namespace MISA.CukCuk.Api.Controllers
         /// <returns></returns>
         /// CreatedBy: LVTHO (11/01/2021)
         [HttpPost]
-        public IActionResult PostCustomer(Customer customer)
+        public IActionResult AddCustomer(Customer customer)
         {
             var serviceResult = _customerService.AddCustomer(customer);
-            
-            if(serviceResult.MISACode == MISACode.NotValid)
+
+            if (serviceResult.MISACode == MISACode.NotValid)
             {
                 return BadRequest(serviceResult.Data);
             }
@@ -198,7 +197,7 @@ namespace MISA.CukCuk.Api.Controllers
         /// <param name="id">Id khách hàng</param>
         /// <returns></returns>
         /// CreatedBy: LVTHO (11/01/2021)
-        [HttpDelete]
+        [HttpDelete("{customerCode}")]
         public IActionResult DeleteCustomer(string customerCode)
         {
             var serviceResult = _customerService.DeleteCustomer(customerCode);

@@ -4,9 +4,4 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\MISA.CukCuk.Infrastructure\MISA.CukCuk.Infrastructure.csproj" />
-    <ProjectReference Include="..\MISA.Entity\MISA.Entity.csproj" />
-  </ItemGroup>
-
 </Project>

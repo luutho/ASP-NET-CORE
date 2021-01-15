@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "oIXqPFzlv504jJVSsPLQ0ngwXIf9CHjUklW27sP8qkzQ7CjGaLIAmwiCWFz4VTCm4yXOpCEYzfGfr4+JwolbNg==",
+  "dgSpecHash": "xKINizDiNgiewi2Z5hQfSMUuFGuG7aiDYNny0zytAJI97fY6r2kUsUKJ/ROhxvnTQwdfHRaf6k5feEJ7pIsawg==",
   "success": true,
-  "projectFilePath": "E:\\LVTho\\ASPNET-CORE\\MISACukCuk\\ASP-NET-CORE\\MISA.CukCuk.Infrastructure\\MISA.CukCuk.Infrastructure.csproj",
+  "projectFilePath": "E:\\LVTho\\NET CORE\\ASP-NET-CORE\\MISA.CukCuk.Infrastructure\\MISA.CukCuk.Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\lvtho\\.nuget\\packages\\bouncycastle.netcore\\1.8.3\\bouncycastle.netcore.1.8.3.nupkg.sha512",
     "C:\\Users\\lvtho\\.nuget\\packages\\dapper\\2.0.78\\dapper.2.0.78.nupkg.sha512",
@@ -11,6 +11,8 @@
     "C:\\Users\\lvtho\\.nuget\\packages\\k4os.compression.lz4.streams\\1.1.11\\k4os.compression.lz4.streams.1.1.11.nupkg.sha512",
     "C:\\Users\\lvtho\\.nuget\\packages\\k4os.hash.xxhash\\1.0.6\\k4os.hash.xxhash.1.0.6.nupkg.sha512",
     "C:\\Users\\lvtho\\.nuget\\packages\\microsoft.csharp\\4.0.1\\microsoft.csharp.4.0.1.nupkg.sha512",
+    "C:\\Users\\lvtho\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\5.0.0\\microsoft.extensions.configuration.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\lvtho\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512",
     "C:\\Users\\lvtho\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\lvtho\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\lvtho\\.nuget\\packages\\microsoft.win32.primitives\\4.0.1\\microsoft.win32.primitives.4.0.1.nupkg.sha512",

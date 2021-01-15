@@ -22,3 +22,15 @@ E:\LVTho\ASPNET-CORE\MISACukCuk\ASP-NET-CORE\MISA.CukCuk.Infrastructure\obj\Debu
 E:\LVTho\ASPNET-CORE\MISACukCuk\ASP-NET-CORE\MISA.CukCuk.Infrastructure\obj\Debug\netcoreapp3.1\MISA.CukCuk.Infrastructure.csproj.CopyComplete
 E:\LVTho\ASPNET-CORE\MISACukCuk\ASP-NET-CORE\MISA.CukCuk.Infrastructure\obj\Debug\netcoreapp3.1\MISA.CukCuk.Infrastructure.dll
 E:\LVTho\ASPNET-CORE\MISACukCuk\ASP-NET-CORE\MISA.CukCuk.Infrastructure\obj\Debug\netcoreapp3.1\MISA.CukCuk.Infrastructure.pdb
+E:\LVTho\NET CORE\ASP-NET-CORE\MISA.CukCuk.Infrastructure\obj\Debug\netcoreapp3.1\MISA.CukCuk.Infrastructure.csprojAssemblyReference.cache
+E:\LVTho\NET CORE\ASP-NET-CORE\MISA.CukCuk.Infrastructure\obj\Debug\netcoreapp3.1\MISA.CukCuk.Infrastructure.AssemblyInfoInputs.cache
+E:\LVTho\NET CORE\ASP-NET-CORE\MISA.CukCuk.Infrastructure\obj\Debug\netcoreapp3.1\MISA.CukCuk.Infrastructure.AssemblyInfo.cs
+E:\LVTho\NET CORE\ASP-NET-CORE\MISA.CukCuk.Infrastructure\obj\Debug\netcoreapp3.1\MISA.CukCuk.Infrastructure.csproj.CoreCompileInputs.cache
+E:\LVTho\NET CORE\ASP-NET-CORE\MISA.CukCuk.Infrastructure\obj\Debug\netcoreapp3.1\MISA.CukCuk.Infrastructure.dll
+E:\LVTho\NET CORE\ASP-NET-CORE\MISA.CukCuk.Infrastructure\obj\Debug\netcoreapp3.1\MISA.CukCuk.Infrastructure.pdb
+E:\LVTho\NET CORE\ASP-NET-CORE\MISA.CukCuk.Infrastructure\bin\Debug\netcoreapp3.1\MISA.CukCuk.Infrastructure.deps.json
+E:\LVTho\NET CORE\ASP-NET-CORE\MISA.CukCuk.Infrastructure\bin\Debug\netcoreapp3.1\MISA.CukCuk.Infrastructure.dll
+E:\LVTho\NET CORE\ASP-NET-CORE\MISA.CukCuk.Infrastructure\bin\Debug\netcoreapp3.1\MISA.CukCuk.Infrastructure.pdb
+E:\LVTho\NET CORE\ASP-NET-CORE\MISA.CukCuk.Infrastructure\bin\Debug\netcoreapp3.1\MISA.CukCuk.ApplicationCore.dll
+E:\LVTho\NET CORE\ASP-NET-CORE\MISA.CukCuk.Infrastructure\bin\Debug\netcoreapp3.1\MISA.CukCuk.ApplicationCore.pdb
+E:\LVTho\NET CORE\ASP-NET-CORE\MISA.CukCuk.Infrastructure\obj\Debug\netcoreapp3.1\MISA.CukCuk.Infrastructure.csproj.CopyComplete

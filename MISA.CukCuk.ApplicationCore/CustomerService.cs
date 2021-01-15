@@ -1,15 +1,11 @@
-﻿using MISA.CukCuk.Infrastructure;
-using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Text;
-using Dapper;
 using System.Linq;
 using MISA.CukCuk.ApplicationCore.Entities;
-using MISA.Entity.model;
-using MISA.Entity;
 using MISA.CukCuk.ApplicationCore.Interfaces;
+using MISA.CukCuk.ApplicationCore.Enums;
 
 namespace MISA.CukCuk.ApplicationCore
 {
@@ -61,7 +57,6 @@ namespace MISA.CukCuk.ApplicationCore
         public ServiceResult AddCustomer(Customer customer)
         {
             var serviceResult = new ServiceResult();
-            var customerContext = new CustomerContext();
 
             //Check trường bắt buộc nhập:
             //Validate dữ liệu:
@@ -81,8 +76,8 @@ namespace MISA.CukCuk.ApplicationCore
             }
 
             //Check trùng mã
-            var res = customerContext.GetCustomerByCode(customerCode);
-            if (res != null)
+            var res = _customerRepository.GetCustomersByCode(customerCode);
+            if (res.Count() > 0)
             {
                 var msg = new
                 {
@@ -91,12 +86,12 @@ namespace MISA.CukCuk.ApplicationCore
                     code = MISACode.NotValid,
                 };
                 serviceResult.MISACode = MISACode.NotValid;
-                serviceResult.Messenger = "Mã khách hàng k được phép để trống!";
+                serviceResult.Messenger = "Mã khách hàng k được trùng!";
                 serviceResult.Data = msg;
                 return serviceResult;
             }
 
-            var rowAffects = customerContext.InsertCustomer(customer);
+            var rowAffects = _customerRepository.AddCustomer(customer);
             serviceResult.MISACode = MISACode.IsValid;
             serviceResult.Messenger = "Thêm thành công!";
             serviceResult.Data = rowAffects;
@@ -114,7 +109,6 @@ namespace MISA.CukCuk.ApplicationCore
         public ServiceResult UpdateCustomer(Customer customer)
         {
             var serviceResult = new ServiceResult();
-            var customerContext = new CustomerContext();
 
             //Check trường bắt buộc nhập:
             //Validate dữ liệu:
@@ -133,7 +127,7 @@ namespace MISA.CukCuk.ApplicationCore
             return serviceResult;
             }
 
-            var rowAffects = customerContext.UpdateCustomerByCode(customer);
+            var rowAffects = _customerRepository.UpdateCustomer(customer);
             serviceResult.MISACode = MISACode.IsValid;
             serviceResult.Messenger = "Sửa thành công";
             serviceResult.Data = rowAffects;
@@ -151,7 +145,6 @@ namespace MISA.CukCuk.ApplicationCore
         public ServiceResult DeleteCustomer(string customerCode)
         {
             var serviceResult = new ServiceResult();
-            var customerContext = new CustomerContext();
             //Check trường bắt buộc nhập:
             //Validate dữ liệu:
             if (string.IsNullOrEmpty(customerCode))
@@ -168,7 +161,7 @@ namespace MISA.CukCuk.ApplicationCore
                 return serviceResult;
             }
 
-            var rowAffects = customerContext.DeleteCustomerByCode(customerCode);
+            var rowAffects = _customerRepository.DeleteCustomerByCode(customerCode);
             serviceResult.MISACode = MISACode.IsValid;
             serviceResult.Messenger = "Xoá thành công";
             serviceResult.Data = rowAffects;

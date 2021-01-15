@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "MYaMBHxiLTR/mFQjzabZpOAviSrRD3n2SLYw8SRg920B+fFVL8plRU2TqonGYYdVAg/UpXja1HfLgXU2vUi5fw==",
+  "dgSpecHash": "fQrL4Ad9b0aSzoS+VsHE1dDSfo+ORzcosiSRbELigUUKNHXo58LHBYxJXTe4fYpy6cHpkVtLXmIoxE4JOAsTkA==",
   "success": true,
-  "projectFilePath": "E:\\LVTho\\ASPNET-CORE\\MISACukCuk\\ASP-NET-CORE\\MISA.Entity\\MISA.Entity.csproj",
+  "projectFilePath": "E:\\LVTho\\NET CORE\\ASP-NET-CORE\\MISA.Entity\\MISA.Entity.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

@@ -1,9 +1,12 @@
 ﻿using Dapper;
-using MISA.Entity.model;
+using Microsoft.Extensions.Configuration;
+using MISA.CukCuk.ApplicationCore.Entities;
+using MISA.CukCuk.ApplicationCore.Interfaces;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Text;
 
 namespace MISA.CukCuk.Infrastructure
@@ -11,37 +14,82 @@ namespace MISA.CukCuk.Infrastructure
     public class CustomerRepository : ICustomerRepository
     {
         #region Declare
-        /// <summary>
-        /// Kết nối Database
-        /// </summary>
-        /// CreatedBy: LVTHO (14/01/2021)
-
-        // Khai báo thông tin kết nối
-        string _connectionString = "User Id=nvmanh;" +
-            "Host=103.124.92.43;" +
-            "Port=3306;" +
-            "Database=MISACukCuk-MF662-LVTHO;" +
-            "Password=12345678;" +
-            "Character Set=utf8";
-        // Khởi tạo đối tượng kết nối
-        IDbConnection dbConnection;
+        IConfiguration _configuration;
+        string _connectionString = string.Empty;
+        IDbConnection _dbConnection = null;
         #endregion
 
         #region Constructor
-        public CustomerRepository()
+        public CustomerRepository(IConfiguration configuration)
         {
-            dbConnection = new MySqlConnection(_connectionString);
+            _configuration = configuration;
+            _connectionString = _configuration.GetConnectionString("MISACukCukConnectionString");
+            _dbConnection = new MySqlConnection(_connectionString);
         }
         #endregion
 
+        #region Method
         public int AddCustomer(Customer customer)
         {
-            throw new NotImplementedException();
+            var properties = customer.GetType().GetProperties();
+            var parameters = new DynamicParameters();
+
+            //Xử lý các kiểu dữ liệu (Mapping dataType):
+            foreach (var property in properties)
+            {
+                var propertyName = property.Name;
+                var propertyType = property.PropertyType;
+                var propertyValue = property.GetValue(customer);
+                if (propertyType == typeof(Guid) || propertyType == typeof(Guid?))
+                {
+                    parameters.Add($"@{propertyName}", propertyValue, DbType.String);
+                }
+                else
+                {
+                    parameters.Add($"@{propertyName}", propertyValue);
+                }
+            }
+
+            //Thực thi commandText
+            var rowAffect = _dbConnection.Execute("Proc_InsertCustomer", parameters, commandType: CommandType.StoredProcedure);
+            //Trả về số bản ghi thêm mới được
+            return rowAffect;
         }
 
         public int DeleteCustomer(Guid customerId)
         {
             throw new NotImplementedException();
+        }
+
+        public int UpdateCustomer(Customer customer)
+        {
+            var properties = customer.GetType().GetProperties();
+            var parameters = new DynamicParameters();
+            //Xử lý các kiểu dữ liệu
+            foreach (var property in properties)
+            {
+                var propertyName = property.Name;
+                var propertyValue = property.GetValue(customer);
+                var propertyType = property.PropertyType;
+                if (propertyType == typeof(Guid) || propertyType == typeof(Guid?))
+                {
+                    parameters.Add($"@{propertyName}", propertyValue, DbType.String);
+                }
+                else
+                {
+                    parameters.Add($"@{propertyName}", propertyValue);
+                }
+            }
+            //Thực thi commandText
+            var rowAffects = _dbConnection.Execute("Proc_UpdateCustomerByCode", parameters, commandType: CommandType.StoredProcedure);
+            //Trả về số bản ghi sửa được
+            return rowAffects;
+        }
+
+        public int DeleteCustomerByCode(string customerCode)
+        {
+            var rowAffects = _dbConnection.Execute("Proc_DeleteCustomerByCode", new { CustomerCode = customerCode }, commandType: CommandType.StoredProcedure);
+            return rowAffects;
         }
 
         public Customer GetCustomerById(Guid customerId)
@@ -52,18 +100,16 @@ namespace MISA.CukCuk.Infrastructure
         public IEnumerable<Customer> GetCustomers()
         {
             //Khởi tạo các commandText
-            var customers = dbConnection.Query<Customer>("Proc_GetCusstomers", commandType: CommandType.StoredProcedure);
+            var customers = _dbConnection.Query<Customer>("Proc_GetCusstomers", commandType: CommandType.StoredProcedure);
             return customers;
         }
 
         public IEnumerable<Customer> GetCustomersByCode(string customerCode)
         {
-            throw new NotImplementedException();
+            var res = _dbConnection.Query<Customer>("Proc_GetCustomerByCode", new { CustomerCode = customerCode }, commandType: CommandType.StoredProcedure);
+            return res;
         }
+        #endregion
 
-        public int UpdateCustomer(Customer customer)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

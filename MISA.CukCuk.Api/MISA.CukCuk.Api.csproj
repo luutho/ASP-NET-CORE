@@ -14,7 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MISA.CukCuk.ApplicationCore\MISA.CukCuk.ApplicationCore.csproj" />
-    <ProjectReference Include="..\MISA.Entity\MISA.Entity.csproj" />
+    <ProjectReference Include="..\MISA.CukCuk.Infrastructure\MISA.CukCuk.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

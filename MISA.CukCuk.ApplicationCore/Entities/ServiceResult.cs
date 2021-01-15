@@ -1,4 +1,4 @@
-﻿using MISA.Entity;
+﻿using MISA.CukCuk.ApplicationCore.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;
