@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MISA.CukCuk.ApplicationCore.Entities
 {
-    class CustomerGroup
+    public class CustomerGroup
     {
         #region Declare
 

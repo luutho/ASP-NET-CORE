@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 
 namespace MISA.CukCuk.Infrastructure
@@ -31,25 +32,8 @@ namespace MISA.CukCuk.Infrastructure
         #region Method
         public int AddCustomer(Customer customer)
         {
-            var properties = customer.GetType().GetProperties();
-            var parameters = new DynamicParameters();
-
-            //Xử lý các kiểu dữ liệu (Mapping dataType):
-            foreach (var property in properties)
-            {
-                var propertyName = property.Name;
-                var propertyType = property.PropertyType;
-                var propertyValue = property.GetValue(customer);
-                if (propertyType == typeof(Guid) || propertyType == typeof(Guid?))
-                {
-                    parameters.Add($"@{propertyName}", propertyValue, DbType.String);
-                }
-                else
-                {
-                    parameters.Add($"@{propertyName}", propertyValue);
-                }
-            }
-
+            //Khởi tạo kết nối với Database
+            var parameters = MappingDbType(customer);
             //Thực thi commandText
             var rowAffect = _dbConnection.Execute("Proc_InsertCustomer", parameters, commandType: CommandType.StoredProcedure);
             //Trả về số bản ghi thêm mới được
@@ -63,23 +47,8 @@ namespace MISA.CukCuk.Infrastructure
 
         public int UpdateCustomer(Customer customer)
         {
-            var properties = customer.GetType().GetProperties();
-            var parameters = new DynamicParameters();
-            //Xử lý các kiểu dữ liệu
-            foreach (var property in properties)
-            {
-                var propertyName = property.Name;
-                var propertyValue = property.GetValue(customer);
-                var propertyType = property.PropertyType;
-                if (propertyType == typeof(Guid) || propertyType == typeof(Guid?))
-                {
-                    parameters.Add($"@{propertyName}", propertyValue, DbType.String);
-                }
-                else
-                {
-                    parameters.Add($"@{propertyName}", propertyValue);
-                }
-            }
+            //Khởi tạo kết nối với Database
+            var parameters = MappingDbType(customer);
             //Thực thi commandText
             var rowAffects = _dbConnection.Execute("Proc_UpdateCustomerByCode", parameters, commandType: CommandType.StoredProcedure);
             //Trả về số bản ghi sửa được
@@ -109,6 +78,36 @@ namespace MISA.CukCuk.Infrastructure
             var res = _dbConnection.Query<Customer>("Proc_GetCustomerByCode", new { CustomerCode = customerCode }, commandType: CommandType.StoredProcedure);
             return res;
         }
+
+        /// <summary>
+        /// Mapping DB
+        /// </summary>
+        /// <typeparam name="TEntity">Kiểu dữ liệu bất kì</typeparam>
+        /// <param name="entity">Kiểu dữ liệu bất kì</param>
+        /// <returns></returns>
+        /// CreatedBy: LVTHO (16/01/2021)
+        private DynamicParameters MappingDbType<TEntity>(TEntity entity)
+        {
+            var properties = entity.GetType().GetProperties();
+            var parameters = new DynamicParameters();
+            foreach (var property in properties)
+            {
+                var propertyName = property.Name;
+                var propertyValue = property.GetValue(entity);
+                var propertyType = property.PropertyType;
+                if (propertyType == typeof(Guid) || propertyType == typeof(Guid?))
+                {
+                    parameters.Add($"@{propertyName}", propertyValue, DbType.String);
+                }
+                else
+                {
+                    parameters.Add($"@{propertyName}", propertyValue);
+                }
+            }
+
+            return parameters;
+        }
+
         #endregion
 
     }

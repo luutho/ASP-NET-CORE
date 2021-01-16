@@ -154,7 +154,7 @@ namespace MISA.CukCuk.Api.Controllers
 
             if (serviceResult.MISACode == MISACode.IsValid && (int)serviceResult.Data > 0)
             {
-                return Created("", customer);
+                return Created("", serviceResult);
             }
             else
             {
@@ -180,7 +180,7 @@ namespace MISA.CukCuk.Api.Controllers
 
             if(serviceResult.MISACode == MISACode.IsValid && (int)serviceResult.Data > 0)
             {
-                return Created("", customer);
+                return Created("", serviceResult);
             }
             else
             {
