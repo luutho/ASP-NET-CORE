@@ -142,7 +142,7 @@ namespace MISA.CukCuk.ApplicationCore
         /// <param name="customerCode">Mã khách hàng</param>
         /// <returns></returns>
         /// CreatedBy: LVTHO (13/01/2021)
-        public ServiceResult DeleteCustomer(string customerCode)
+        public ServiceResult DeleteCustomerByCode(string customerCode)
         {
             var serviceResult = new ServiceResult();
             //Check trường bắt buộc nhập:
@@ -168,9 +168,48 @@ namespace MISA.CukCuk.ApplicationCore
             return serviceResult;
         }
 
+        /// <summary>
+        /// Xoá thông tin khách hàng theo Id khách hàng
+        /// </summary>
+        /// <param name="customerId">Id khách hàng</param>
+        /// <returns>Số bản ghi bị ảnh hưởng</returns>
+        /// CreatedBy: LVTHO (18/01/2021)
+        public ServiceResult DeleteCustomerById (Guid customerId)
+        {
+            var serviceResult = new ServiceResult();
+            //Check trường bắt buộc nhập:
+            //Validate dữ liệu:
+            if (customerId == Guid.Empty)
+            {
+                var msg = new
+                {
+                    devMsg = new { fieldName = "CustomerId", msg = "Id khách hàng không được để trống!" },
+                    userMsg = "Id khách hàng không được để trống!",
+                    code = MISACode.NotValid,
+                };
+                serviceResult.MISACode = MISACode.NotValid;
+                serviceResult.Messenger = "Id khách hàng không được để trống!";
+                serviceResult.Data = msg;
+                return serviceResult;
+            }
+
+            var rowAffects = _customerRepository.DeleteCustomerById(customerId);
+            serviceResult.MISACode = MISACode.IsValid;
+            serviceResult.Messenger = "Xoá thành công";
+            serviceResult.Data = rowAffects;
+            return serviceResult;
+        }
+
+        /// <summary>
+        /// Lấy thông tin khách hàng theo Id khách hàng
+        /// </summary>
+        /// <param name="customerId">Id khách hàng</param>
+        /// <returns>Thông tin khách hàng</returns>
+        /// CreatedBy: LVTHO (18/01/2021)
         public IEnumerable<Customer> GetCustomerById(Guid customerId)
         {
-            throw new NotImplementedException();
+            var customer = _customerRepository.GetCustomerById(customerId);
+            return customer;
         }
 
 

@@ -23,14 +23,15 @@ namespace MISA.CukCuk.ApplicationCore
             throw new NotImplementedException();
         }
 
-        public ServiceResult DeleteCustomerGroup(Guid customerGroupId)
+        public ServiceResult DeleteCustomerGroup(string customerGroupId)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<CustomerGroup> GetCustomerGroupById(Guid customerGroupId)
+        public IEnumerable<CustomerGroup> GetCustomerGroupById(string customerGroupId)
         {
-            throw new NotImplementedException();
+            var customerGroup = _customerGroupRepository.GetCustomerGroupById(customerGroupId);
+            return customerGroup;
         }
 
         public ServiceResult UpdateCustomerGroup(CustomerGroup customerGroup)

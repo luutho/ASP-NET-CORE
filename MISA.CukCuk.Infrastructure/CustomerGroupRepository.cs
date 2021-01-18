@@ -32,7 +32,7 @@ namespace MISA.CukCuk.Infrastructure
             throw new NotImplementedException();
         }
 
-        public int DeleteCustomerGroup(Guid customerGroupId)
+        public int DeleteCustomerGroup(string customerGroupId)
         {
             throw new NotImplementedException();
         }
@@ -48,9 +48,10 @@ namespace MISA.CukCuk.Infrastructure
             throw new NotImplementedException();
         }
 
-        IEnumerable<CustomerGroup> ICustomerGroupRepository.GetCustomerGroupById(Guid customerGroupId)
+        public IEnumerable<CustomerGroup>  GetCustomerGroupById(string customerGroupId)
         {
-            throw new NotImplementedException();
+            var customerGroups = _dbConnection.Query<CustomerGroup>("Proc_GetCustomerGroupById", new { CustomerGroupId = customerGroupId }, commandType: CommandType.StoredProcedure);
+            return customerGroups;
         }
     }
 }

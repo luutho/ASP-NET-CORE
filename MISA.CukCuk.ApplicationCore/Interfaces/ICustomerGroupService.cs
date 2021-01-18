@@ -12,7 +12,7 @@ namespace MISA.CukCuk.ApplicationCore.Interfaces
         /// </summary>
         /// <returns>Danh sách nhóm khách hàng</returns>
         /// CreatedBy: LVTHO (16/01/2021)
-        public IEnumerable<CustomerGroup> GetCustomerGroups();
+        IEnumerable<CustomerGroup> GetCustomerGroups();
 
         /// <summary>
         /// Lấy danh sách nhóm khách hàng theo Id nhóm khách hàng
@@ -20,7 +20,7 @@ namespace MISA.CukCuk.ApplicationCore.Interfaces
         /// <param name="customerGroupId">Id nhóm khách hàng</param>
         /// <returns>Danh sách nhóm khách hàng</returns>
         /// CreatedBy: LVTHO (14/01/2021)
-        IEnumerable<CustomerGroup> GetCustomerGroupById(Guid customerGroupId);
+        IEnumerable<CustomerGroup> GetCustomerGroupById(string customerGroupId);
 
         /// <summary>
         /// Thêm mới nhóm khách hàng
@@ -44,6 +44,6 @@ namespace MISA.CukCuk.ApplicationCore.Interfaces
         /// <param name="customerGroupId">Id nhóm khách hàng</param>
         /// <returns></returns>
         /// Createdby: LVTHO (14/01/2021)
-        ServiceResult DeleteCustomerGroup(Guid customerGroupId);
+        ServiceResult DeleteCustomerGroup(string customerGroupId);
     }
 }

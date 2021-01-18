@@ -20,7 +20,7 @@ namespace MISA.CukCuk.ApplicationCore.Interfaces
         /// <param name="customerId">Id khách hàng</param>
         /// <returns>Danh sách khách hàng</returns>
         /// CreatedBy: LVTHO (12/01/2021)
-        Customer GetCustomerById(Guid customerId);
+        IEnumerable<Customer> GetCustomerById(Guid customerId);
 
         /// <summary>
         /// Lấy danh sách khách hàng theo mã khách hàng
@@ -52,7 +52,7 @@ namespace MISA.CukCuk.ApplicationCore.Interfaces
         /// <param name="customerId">Id khách hàng</param>
         /// <returns>Số bản ghi bị ảnh hưởng</returns>
         /// CreatedBy: LVTHO (14/01/2021)
-        int DeleteCustomer(Guid customerId);
+        int DeleteCustomerById(Guid customerId);
 
         /// <summary>
         /// Xoá thông tin khách hàng theo mã khách hàng

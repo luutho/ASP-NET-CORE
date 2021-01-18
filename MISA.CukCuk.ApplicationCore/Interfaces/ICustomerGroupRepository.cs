@@ -17,10 +17,10 @@ namespace MISA.CukCuk.ApplicationCore.Interfaces
         /// <summary>
         /// Lấy danh sách nhóm khách hàng theo Id Khách hàng
         /// </summary>
-        /// <param name="customerGroupId">Id nhóm khách hàng</param>
+        /// <param name = "customerGroupId" > Id nhóm khách hàng</param>
         /// <returns>Danh sách khách hàng</returns>
         /// CreatedBy: LVTHO (16/01/2021)
-        IEnumerable<CustomerGroup> GetCustomerGroupById(Guid customerGroupId);
+        IEnumerable<CustomerGroup> GetCustomerGroupById(string customerGroupId);
 
         /// <summary>
         /// Thêm mới nhóm khách hàng
@@ -44,6 +44,6 @@ namespace MISA.CukCuk.ApplicationCore.Interfaces
         /// <param name="customerGroupId">Id nhóm khách hàng</param>
         /// <returns>Số bản ghi bị ảnh hưởng</returns>
         /// CreatedBy: LVTHO (16/01/2021)
-        int DeleteCustomerGroup(Guid customerGroupId);
+        int DeleteCustomerGroup(string customerGroupId);
     }
 }

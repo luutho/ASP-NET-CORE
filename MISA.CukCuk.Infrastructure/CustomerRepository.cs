@@ -40,9 +40,10 @@ namespace MISA.CukCuk.Infrastructure
             return rowAffect;
         }
 
-        public int DeleteCustomer(Guid customerId)
+        public int DeleteCustomerById(Guid customerId)
         {
-            throw new NotImplementedException();
+            var rowAffects = _dbConnection.Execute("Proc_DeleteCustomerById", new { CustomerId = customerId.ToString() }, commandType: CommandType.StoredProcedure);
+            return rowAffects;
         }
 
         public int UpdateCustomer(Customer customer)
@@ -61,15 +62,16 @@ namespace MISA.CukCuk.Infrastructure
             return rowAffects;
         }
 
-        public Customer GetCustomerById(Guid customerId)
+        public IEnumerable<Customer> GetCustomerById(Guid customerId)
         {
-            throw new NotImplementedException();
+            var customer = _dbConnection.Query<Customer>("Proc_GetCustomerById", new { CustomerId = customerId.ToString() }, commandType: CommandType.StoredProcedure);
+            return customer;
         }
 
         public IEnumerable<Customer> GetCustomers()
         {
             //Khởi tạo các commandText
-            var customers = _dbConnection.Query<Customer>("Proc_GetCusstomers", commandType: CommandType.StoredProcedure);
+            var customers = _dbConnection.Query<Customer>("Proc_GetCustomers", commandType: CommandType.StoredProcedure);
             return customers;
         }
 

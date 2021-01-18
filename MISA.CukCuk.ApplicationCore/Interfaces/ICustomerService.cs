@@ -52,6 +52,14 @@ namespace MISA.CukCuk.ApplicationCore.Interfaces
         /// <param name="customerCode">Mã khách hàng</param>
         /// <returns></returns>
         /// Createdby: LVTHO (14/01/2021)
-        ServiceResult DeleteCustomer(string customerCode);
+        ServiceResult DeleteCustomerByCode(string customerCode);
+
+        /// <summary>
+        /// Xoá thông tin khách hàng theo Id khách hàng
+        /// </summary>
+        /// <param name="customerId">Id khách hàng</param>
+        /// <returns>Số bản ghi bị ảnh hưởng</returns>
+        /// CreatedBy: LVTHO(18/01/2021)
+        ServiceResult DeleteCustomerById(Guid customerId);
     }
 }
