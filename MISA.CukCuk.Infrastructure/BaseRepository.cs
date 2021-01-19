@@ -16,6 +16,7 @@ namespace MISA.CukCuk.Infrastructure
         string _connectionString = string.Empty;
         IDbConnection _dbConnection = null;
         string _tableName;
+        string _tableNameId;
         #endregion
 
         #region Constructor
@@ -42,7 +43,9 @@ namespace MISA.CukCuk.Infrastructure
 
         public int Delete(Guid entityId)
         {
-            var rowAffects = _dbConnection.Execute($"Proc_Delete{_tableName}ById", new { EntityId = entityId }, commandType: CommandType.StoredProcedure);
+            DynamicParameters param = new DynamicParameters();
+            param.Add($"@{_tableName}Id", entityId, DbType.String);
+            var rowAffects = _dbConnection.Execute($"Proc_Delete{_tableName}ById", param, commandType: CommandType.StoredProcedure);
             return rowAffects;
         }
 
@@ -55,7 +58,9 @@ namespace MISA.CukCuk.Infrastructure
 
         public IEnumerable<TEntity> GetEntityById(Guid entityId)
         {
-            var entity = _dbConnection.Query<TEntity>($"Proc_Get{_tableName}ById", new { EntityId = entityId }, commandType: CommandType.StoredProcedure);
+            DynamicParameters param = new DynamicParameters();
+            param.Add($"@{_tableName}Id", entityId, DbType.String);
+            var entity = _dbConnection.Query<TEntity>($"Proc_Get{_tableName}ById", param, commandType: CommandType.StoredProcedure);
             return entity;
         }
 

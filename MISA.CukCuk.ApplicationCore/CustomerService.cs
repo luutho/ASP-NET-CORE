@@ -9,12 +9,12 @@ using MISA.CukCuk.ApplicationCore.Enums;
 
 namespace MISA.CukCuk.ApplicationCore
 {
-    public class CustomerService : ICustomerService
+    public class CustomerService : BaseService<Customer>, ICustomerService
     {
-        ICustomerRepository _customerRepository;
+        IBaseRepository<Customer> _customerRepository;
 
         #region constructor
-        public CustomerService(ICustomerRepository customerRepository)
+        public CustomerService(IBaseRepository<Customer> customerRepository):base(customerRepository)
         {
             _customerRepository = customerRepository;
         }
@@ -30,7 +30,7 @@ namespace MISA.CukCuk.ApplicationCore
         /// CreatedBy: LVTHO (12/01/2021)
         public IEnumerable<Customer> GetCustomers()
         {
-            var customers = _customerRepository.GetCustomers();
+            var customers = _customerRepository.GetEntities();
             return customers;
         }
 
@@ -41,11 +41,11 @@ namespace MISA.CukCuk.ApplicationCore
         /// <param name="customerCode">Mã khách hàng</param>
         /// <returns></returns>
         /// CreatedBy: LVTHO (12/01/2021)
-        public IEnumerable<Customer> GetCustomerByCode(string customerCode)
-        {
-            var customers = _customerRepository.GetCustomersByCode(customerCode);
-            return customers;
-        }
+        //public IEnumerable<Customer> GetCustomerByCode(string customerCode)
+        //{
+        //    var customers = _customerRepository.GetCustomersByCode(customerCode);
+        //    return customers;
+        //}
 
         //Thêm mới khách hàng
         /// <summary>
@@ -75,23 +75,23 @@ namespace MISA.CukCuk.ApplicationCore
                 return serviceResult; 
             }
 
-            //Check trùng mã
-            var res = _customerRepository.GetCustomersByCode(customerCode);
-            if (res.Count() > 0)
-            {
-                var msg = new
-                {
-                    devMsg = new { fieldName = "CustomerCode", msg = "Mã khách hàng không được trùng!" },
-                    userMsg = "Mã khách hàng không được trùng!",
-                    code = MISACode.NotValid,
-                };
-                serviceResult.MISACode = MISACode.NotValid;
-                serviceResult.Messenger = "Mã khách hàng k được trùng!";
-                serviceResult.Data = msg;
-                return serviceResult;
-            }
+            ////Check trùng mã
+            //var res = _customerRepository.GetCustomersByCode(customerCode);
+            //if (res.Count() > 0)
+            //{
+            //    var msg = new
+            //    {
+            //        devMsg = new { fieldName = "CustomerCode", msg = "Mã khách hàng không được trùng!" },
+            //        userMsg = "Mã khách hàng không được trùng!",
+            //        code = MISACode.NotValid,
+            //    };
+            //    serviceResult.MISACode = MISACode.NotValid;
+            //    serviceResult.Messenger = "Mã khách hàng k được trùng!";
+            //    serviceResult.Data = msg;
+            //    return serviceResult;
+            //}
 
-            var rowAffects = _customerRepository.AddCustomer(customer);
+            var rowAffects = _customerRepository.Add(customer);
             serviceResult.MISACode = MISACode.IsValid;
             serviceResult.Messenger = "Thêm thành công!";
             serviceResult.Data = rowAffects;
@@ -127,7 +127,7 @@ namespace MISA.CukCuk.ApplicationCore
             return serviceResult;
             }
 
-            var rowAffects = _customerRepository.UpdateCustomer(customer);
+            var rowAffects = _customerRepository.Update(customer);
             serviceResult.MISACode = MISACode.IsValid;
             serviceResult.Messenger = "Sửa thành công";
             serviceResult.Data = rowAffects;
@@ -142,31 +142,31 @@ namespace MISA.CukCuk.ApplicationCore
         /// <param name="customerCode">Mã khách hàng</param>
         /// <returns></returns>
         /// CreatedBy: LVTHO (13/01/2021)
-        public ServiceResult DeleteCustomerByCode(string customerCode)
-        {
-            var serviceResult = new ServiceResult();
-            //Check trường bắt buộc nhập:
-            //Validate dữ liệu:
-            if (string.IsNullOrEmpty(customerCode))
-            {
-                var msg = new
-                {
-                    devMsg = new { fieldName = "CustomerCode", msg = "Mã khách hàng không được để trống!" },
-                    userMsg = "Mã khách hàng không được để trống!",
-                    code = MISACode.NotValid,
-                };
-                serviceResult.MISACode = MISACode.NotValid;
-                serviceResult.Messenger = "Mã khách hàng không được để trống!";
-                serviceResult.Data = msg;
-                return serviceResult;
-            }
+        //public ServiceResult DeleteCustomerByCode(string customerCode)
+        //{
+        //    var serviceResult = new ServiceResult();
+        //    //Check trường bắt buộc nhập:
+        //    //Validate dữ liệu:
+        //    if (string.IsNullOrEmpty(customerCode))
+        //    {
+        //        var msg = new
+        //        {
+        //            devMsg = new { fieldName = "CustomerCode", msg = "Mã khách hàng không được để trống!" },
+        //            userMsg = "Mã khách hàng không được để trống!",
+        //            code = MISACode.NotValid,
+        //        };
+        //        serviceResult.MISACode = MISACode.NotValid;
+        //        serviceResult.Messenger = "Mã khách hàng không được để trống!";
+        //        serviceResult.Data = msg;
+        //        return serviceResult;
+        //    }
 
-            var rowAffects = _customerRepository.DeleteCustomerByCode(customerCode);
-            serviceResult.MISACode = MISACode.IsValid;
-            serviceResult.Messenger = "Xoá thành công";
-            serviceResult.Data = rowAffects;
-            return serviceResult;
-        }
+        //    var rowAffects = _customerRepository.Delete(customerCode);
+        //    serviceResult.MISACode = MISACode.IsValid;
+        //    serviceResult.Messenger = "Xoá thành công";
+        //    serviceResult.Data = rowAffects;
+        //    return serviceResult;
+        //}
 
         /// <summary>
         /// Xoá thông tin khách hàng theo Id khách hàng
@@ -193,7 +193,7 @@ namespace MISA.CukCuk.ApplicationCore
                 return serviceResult;
             }
 
-            var rowAffects = _customerRepository.DeleteCustomerById(customerId);
+            var rowAffects = _customerRepository.Delete(customerId);
             serviceResult.MISACode = MISACode.IsValid;
             serviceResult.Messenger = "Xoá thành công";
             serviceResult.Data = rowAffects;
@@ -208,8 +208,18 @@ namespace MISA.CukCuk.ApplicationCore
         /// CreatedBy: LVTHO (18/01/2021)
         public IEnumerable<Customer> GetCustomerById(Guid customerId)
         {
-            var customer = _customerRepository.GetCustomerById(customerId);
+            var customer = _customerRepository.GetEntityById(customerId);
             return customer;
+        }
+
+        public IEnumerable<Customer> GetCustomerPaging(int limit, int offset)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Customer> GetCustomersByGroup(Guid groupId)
+        {
+            throw new NotImplementedException();
         }
 
 

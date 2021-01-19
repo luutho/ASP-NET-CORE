@@ -14,9 +14,10 @@ namespace MISA.CukCuk.ApplicationCore.Interfaces
         IEnumerable<TEntity> GetEntities();
 
         /// <summary>
-        /// Lấy 1 bản ghi theo Id
+        /// Lấy danh sách theo khoá chính
         /// </summary>
-        /// <returns>Thông tin 1 bản ghi</returns>
+        /// <param name="entityId">Khoá chính</param>
+        /// <returns>Danh sách</returns>
         /// CreatedBy: LVTHO (18/01/2021)
         IEnumerable<TEntity> GetEntityById(Guid entityId);
 
