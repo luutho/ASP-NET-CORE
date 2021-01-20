@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MISA.CukCuk.ApplicationCore.Entities;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -26,7 +27,7 @@ namespace MISA.CukCuk.ApplicationCore.Interfaces
         /// <param name="entity">Object</param>
         /// <returns>Số bản ghi ảnh hưởng</returns>
         /// CreatedBy: LVTHO (18/01/2021)
-        int Add(TEntity entity);
+        ServiceResult Add(TEntity entity);
 
         /// <summary>
         /// Sửa bản ghi
@@ -34,7 +35,7 @@ namespace MISA.CukCuk.ApplicationCore.Interfaces
         /// <param name="entity">Object</param>
         /// <returns>Số bản ghi bị ảnh hưởng</returns>
         /// CreatedBy: LVTHO (18/01/2021)
-        int Update(TEntity entity);
+        ServiceResult Update(TEntity entity);
 
         /// <summary>
         /// Xoá bản ghi
@@ -42,6 +43,6 @@ namespace MISA.CukCuk.ApplicationCore.Interfaces
         /// <param name="entityId">Id bản ghi cần xoá</param>
         /// <returns>Số bản ghi bị ảnh hưởng</returns>
         /// CreatedBy: LVTHO (18/01/2021)
-        int Delete(Guid entityId);
+        ServiceResult Delete(Guid entityId);
     }
 }

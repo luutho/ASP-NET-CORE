@@ -29,12 +29,15 @@ namespace MISA.CukCuk.ApplicationCore.Entities
         /// Id khách hàng - Khoá chính
         /// </summary>
         /// CrestedBy: LVTHO (07/01/2021)
+        [PrimaryKey]
         public Guid CustomerId { get; set; }
 
         /// <summary>
         /// Mã khách hàng
         /// </summary>
         /// CrestedBy: LVTHO (07/01/2021)
+        [CheckDuplicate]
+        [Required]
         public string CustomerCode { get; set; }
 
         /// <summary>
