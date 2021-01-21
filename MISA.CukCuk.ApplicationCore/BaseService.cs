@@ -2,46 +2,45 @@
 using MISA.CukCuk.ApplicationCore.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace MISA.CukCuk.ApplicationCore
 {
-    public class BaseService<TEntity> : IBaseService<TEntity>
+    public class BaseService<TEntity> : IBaseService<TEntity> where TEntity:BaseEntity
     {
         IBaseRepository<TEntity> _baseRepository;
+        ServiceResult _serviceResult;
 
         #region constructor
         public BaseService(IBaseRepository<TEntity> baseRepository)
         {
             _baseRepository = baseRepository;
+            _serviceResult = new ServiceResult() { MISACode = Enums.MISACode.Success };
         }
         #endregion
 
         public virtual ServiceResult Add(TEntity entity)
         {
-            ServiceResult serviceResult = new ServiceResult();
+            entity.EntityState = Enums.EntityState.AddNew;
             var isValidate = Validate(entity);
             if (isValidate == true)
             {
-                serviceResult.Data = _baseRepository.Add(entity);
-                serviceResult.MISACode = Enums.MISACode.IsValid;
-                return serviceResult;
+                _serviceResult.Data = _baseRepository.Add(entity);
+                _serviceResult.MISACode = Enums.MISACode.IsValid;
+                return _serviceResult;
             }
             else
             {
-                serviceResult.Data = _baseRepository.Add(entity);
-                serviceResult.MISACode = Enums.MISACode.NotValid;
-                return serviceResult;
+                return _serviceResult;
             }
-            
+
         }
 
         public ServiceResult Delete(Guid entityId)
         {
-            ServiceResult serviceResult = new ServiceResult();
-            serviceResult.Data = _baseRepository.Delete(entityId)
-            serviceResult.MISACode = Enums.MISACode.IsValid;
-            return serviceResult;
+            _serviceResult.Data = _baseRepository.Delete(entityId);
+            return _serviceResult;
         }
 
         public IEnumerable<TEntity> GetEntities()
@@ -56,24 +55,42 @@ namespace MISA.CukCuk.ApplicationCore
 
         public ServiceResult Update(TEntity entity)
         {
-            return _baseRepository.Update(entity);
+            entity.EntityState = Enums.EntityState.Update;
+            var isValidate = Validate(entity);
+            if(isValidate == true)
+            {
+                _serviceResult.Data = _baseRepository.Update(entity);
+                _serviceResult.MISACode = Enums.MISACode.IsValid;
+                return _serviceResult;
+            }
+            else
+            {
+                return _serviceResult;
+            }
+            
         }
 
         private bool Validate(TEntity entity)
         {
+            var mesArrayError = new List<string>();
             var isValidate = true;
+            var serviceResult = new ServiceResult();
             // Đọc các property
             var properties = entity.GetType().GetProperties();
             foreach (var property in properties)
             {
+                var propertyValue = property.GetValue(entity);
+                var displayName = property.GetCustomAttributes(typeof(DisplayNameAttribute), true);
                 // Kiểm tra attribute có cần phải validate không:
                 if (property.IsDefined(typeof(Required), false))
                 {
                     // Check bắt buộc nhập
-                    var propertyValue = property.GetValue(entity);
                     if (propertyValue == null)
                     {
                         isValidate = false;
+                        mesArrayError.Add($"Thông tin {displayName} không hợp lệ");
+                        _serviceResult.MISACode = Enums.MISACode.NotValid;
+                        _serviceResult.Messenger = "Dữ liệu không hợp lệ";
                     }
                 }
 
@@ -81,15 +98,18 @@ namespace MISA.CukCuk.ApplicationCore
                 {
                     // Check trùng dữ liệu
                     var propertyName = property.Name;
-                    var entityDuplicate = _baseRepository.GetEntityByProperty(propertyName, property.GetValue(entity));
+                    var entityDuplicate = _baseRepository.GetEntityByProperty(entity, property);
                     if (entityDuplicate != null)
                     {
                         isValidate = false;
+                        mesArrayError.Add($"Thông tin {displayName} đã có trên hệ thống");
+                        _serviceResult.MISACode = Enums.MISACode.NotValid;
+                        _serviceResult.Messenger = "Dữ liệu không hợp lệ";
                     }
                 }
 
             }
-
+            _serviceResult.Data = mesArrayError;
             return isValidate;
         }
     }

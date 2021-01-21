@@ -46,6 +46,6 @@ namespace MISA.CukCuk.ApplicationCore.Interfaces
         /// CreatedBy: LVTHO (18/01/2021)
         int Delete(Guid entityId);
 
-        TEntity GetEntityByProperty(string propertyName, object propertyValue);
+        TEntity GetEntityByProperty(TEntity entity, PropertyInfo property);
     }
 }

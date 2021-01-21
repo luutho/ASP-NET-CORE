@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MISA.CukCuk.ApplicationCore.Enums;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -24,6 +25,7 @@ namespace MISA.CukCuk.ApplicationCore.Entities
 
     public class BaseEntity
     {
+        public EntityState EntityState { get; set; } = EntityState.AddNew;
         public DateTime CreatedDate { get; set; }
 
         public string Createdby { get; set; }

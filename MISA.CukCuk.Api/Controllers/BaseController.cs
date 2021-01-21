@@ -57,9 +57,11 @@ namespace MISA.CukCuk.Api.Controllers
         }
 
 
-        [HttpPut]
-        public IActionResult PutCustomer(TEntity entity)
+        [HttpPut("{id}")]
+        public IActionResult PutCustomer([FromRoute] string id, [FromBody]TEntity entity)
         {
+            var keyProperty = entity.GetType().GetProperty($"{typeof(TEntity).Name}Id");
+            keyProperty.SetValue(entity, Convert.ChangeType(id, keyProperty.PropertyType));
             var res = _baseService.Update(entity);
             return Ok(res);
             //if (serviceResult.MISACode == MISACode.NotValid)

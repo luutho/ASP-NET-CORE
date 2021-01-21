@@ -25,4 +25,15 @@ namespace MISA.CukCuk.ApplicationCore.Enums
         /// </summary>
         Success = 200
     }
+
+    /// <summary>
+    /// Xác định trạng thái của object
+    /// </summary>
+    /// CreatedBy: LVTHO (21/01/2021)
+    public enum EntityState
+    {
+        AddNew = 1,
+        Update = 2,
+        Delete = 3,
+    }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -9,7 +10,7 @@ namespace MISA.CukCuk.ApplicationCore.Entities
     /// Khách hàng
     /// </summary>
     /// CreatedBy: LVTHO (12/01/2021)
-    public class Customer
+    public class Customer:BaseEntity
     {
         #region Declare
 
@@ -38,6 +39,7 @@ namespace MISA.CukCuk.ApplicationCore.Entities
         /// CrestedBy: LVTHO (07/01/2021)
         [CheckDuplicate]
         [Required]
+        [DisplayName("Mã khách hàng")]
         public string CustomerCode { get; set; }
 
         /// <summary>
@@ -50,6 +52,7 @@ namespace MISA.CukCuk.ApplicationCore.Entities
         /// SĐT khách hàng
         /// </summary>
         /// CrestedBy: LVTHO (07/01/2021)
+        [DisplayName("Họ tên khách hàng")]
         public string PhoneNumber { get; set; }
 
         /// <summary>
